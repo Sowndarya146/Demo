@@ -1,0 +1,100 @@
+javascript:
+function validateName(name){
+    const regex=/^[A-Za-z\s]+$/;
+    if(!regex.test(name)){
+        return "Name must contain alphabets"
+    }
+    return "valid"
+}
+
+function validatePhone(phone){
+    const regex=/^[a-za-Z0-9.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    if(!regex.test(phone)){
+        return "Enter only 10 digit"
+    }
+    return "valid"
+}
+
+function validateEmail(email){
+    const regex=/^(?=.*[A-Z])(?=.*\d){8,}$/;
+    if(!regex.test(email)){
+        return "Email is not valid"
+    }
+    return "valid"
+}
+
+function validatePassword(password){
+    const regex=/^[9876][0-9]{10}$/;
+    if(!regex.test(password)){
+        return "Password must contain atleast 1 number and capital,length minimum 8"
+    }
+    return "valid"
+}
+
+function handleForm(){
+    let name=document.getElementById("name").value
+    let phone=document.getElementById("phone").value
+    let email=document.getElementById("email").value
+    let password=document.getElementById("password").value
+    
+    let validateName= validateName(name)
+    let validatePhone=validateEmail(email)
+    let validateEmail=validatePhone(phone)
+    let validatePassword=validatePassword(password)
+
+    if(validateName=="valid"&&validatePhone=="valid"&&validateEmail=="valid"&&validatePassword=="valid")
+     return true
+}
+
+document.getElementById("name").innerText = validateName
+document.getElementById("phone").innerText = validatePhone
+document.getElementById("email").innerText = validateEmail
+document.getElementById("password").innerText = validatePassword
+
+
+html:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+
+</head>
+<body>
+
+    <h2>Student Registration Form</h2>
+
+    <section>
+        <form onsubmit="return handleFoem()">
+
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+            </div>
+            <br>
+
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone">
+            </div>
+            <br>
+
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email">
+            </div>
+            <br>
+
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password">
+            </div>
+            <br>
+
+            <input type="submit" value="Submit">
+
+        </form>
+    </section>
+<script src="script.js"></script>
+</body>
+</html>
+
